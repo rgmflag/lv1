@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To CTFers!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="text/javascript" src="sha256.js"></script>
+    <script>
+        "use strict";
+        function check(){
+            const flag = document.getElementById("flag");
+            const SHA_OBJ = new jsSHA("SHA-256","TEXT");
+            SHA_OBJ.update(flag.value);
+            const flag_sha256 = SHA_OBJ.getHash("HEX")
+            if (flag_sha256 === "839b8bfcf32927e695aabe09c6af7acd91a1ec149af077abde01ab8f51b3c86d"){
+                alert("Correct Flag!")
+            }else{
+                alert("Incorrect Flag");
+            }    
+        }
+    </script>
+</head>
+<body>
+    <h1>To CTFers!</h1>
+
+    <h3>Lv1:Easy Binary</h3>
+    
+    Get the Flag!<br>
+    FLAG format is RGM{FLAG}<br>
+    <a href="flag.txt" download>flag.txt</a>
+    <br><br>
+    <form id="flagSubmit" onsubmit="return check()">
+        <label for="flag">FLAG:</label>
+        <input id="flag" type="text" placeholder="Your FLAG" />
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
